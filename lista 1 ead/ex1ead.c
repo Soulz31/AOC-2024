@@ -18,36 +18,63 @@ void imprimeVet(int *vet, int lin);
 
 
 int main (){
+    int op;
+    
+    do {
+   
+    printf("\n este programa trabalha com matrizes e vetores dinamicos \n");
+    printf("digite os numeros do menu para usar o programa \n");
+    printf("1 - criar uma matriz dinamica de acordo com as dimensoes do usuario \n");
+    printf("2 - realiza o preenchimento da matriz com elementos aleatorios \n");
+    printf("3 - fornecer a soma dos elementos da matriz \n");
+    printf("4 - retornar uma coluna da matriz em forma de vetor \n");
+    printf("5 - sair do programa \n");
+    scanf("%d", &op);
+    
     int **mat, n, m, *vet, ncol;
     
-    printf("digite o numero de linhas da matriz: \n");
-    scanf("%d", &n);
+    if(op==1){
 
-    printf("digite o numero de colunas da matriz: \n");
-    scanf("%d", &m);
+        printf("digite o numero de linhas da matriz: \n");
+        scanf("%d", &n);
+
+        printf("digite o numero de colunas da matriz: \n");
+        scanf("%d", &m);
+        
+        mat = criaMatriz(n,m);
+    }
     
-    mat = criaMatriz(n,m);
-    
+    if(op==2){
     lerMatriz(mat,n,m);
-    printf("a soma dos elementos da matriz e: %d \n", somaMatriz(mat,n,m));
     imprimeMatriz(mat,n,m);
+    }
+    
+    if(op==3){
+     printf("a soma dos elementos da matriz e: %d \n", somaMatriz(mat,n,m));
+    }
 
+   if(op==4){
     printf("digite o numero da coluna que deseja ver: \n");
     scanf("%d", &ncol);
 
     vet = colunaMatriz(mat,n,m,ncol);
-
     printf ("vetor da coluna %d da matriz: ", ncol);
     imprimeVet(vet,n);
 
-    liberaMat(mat, ncol);
+   }
+    
+} while (op!=5);
+
+
+/*
+liberaMat(mat, ncol);
 
     printf ("\n");
 
     imprimeMatriz(mat,n,m);
+*/
 
-
-    
+printf("saiu do programa!");
 
 return 0;
 }
